@@ -1,19 +1,58 @@
 import React from 'react';
-import { Link } from 'react-router-dom'; 
+import { Link, useLocation, useNavigate } from 'react-router-dom'; 
 import Login from './login';
 import { useForm } from "react-hook-form"
+import axios from "axios"
+import toast from 'react-hot-toast';
 
 export function SignUp() { 
+  const location=useLocation();
+  const from= location.state?.from?.pathname || "/";
+  const navigate=useNavigate();
+
   const {
-    register,
     handleSubmit,
+    register,
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
-    console.log(data);
-  };
+  const onSubmit = async (data) => {
+    const userinfo = {
+      name: data.name,
+      email: data.email,
+      password: data.password,
+    };
+  
+    try {
+      const res = await axios.post("http://localhost:4001/user/signup", userinfo);
+      
+      // Log the entire response to check the structure
+      console.log("Signup response data:", res.data);
+      
+      if (res.data) {
+        localStorage.setItem("Users", JSON.stringify(res.data.user));
+        toast.success("Signup successful!");
+        navigate(from,{replace:true});
 
+      } else {
+        toast.success("Signup failed: User data not received");
+      }
+    } catch (err) {
+      if (err.response) {
+        console.log("Error data:", err.response.data);
+        console.log("Error status:", err.response.status);
+        console.log("Error headers:", err.response.headers);
+        toast.success("Signup failed: " + err.response.data.message);
+      } else if (err.request) {
+        console.log("No response received:", err.request);
+        toast.success("Signup failed: No response from server");
+      } else {
+        console.log("Error", err.message);
+        toast.success("Signup failed: " + err.message);
+      }
+    }
+  };
+ 
   return (
     <>
       <div className='flex h-screen items-center justify-center'>
@@ -47,7 +86,7 @@ export function SignUp() {
                   type="email" 
                   placeholder="Enter your email" 
                   className='w-80 px-3 py-1 rounded-md'
-                  {...register("email", { required: true })}
+                 {...register("email", { required: true })}
                 />
                 <br/>
                 {errors.email && <span className='text-sm text-red-600'>This field is required</span>}
