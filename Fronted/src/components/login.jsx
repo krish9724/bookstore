@@ -18,7 +18,7 @@ function Login() {
     };
   
     try {
-      const res = await axios.post("http://localhost:4001/user/login", userinfo);
+      const res = await axios.post("/user/login", userinfo);
       
       console.log("Login response data:", res.data);
       

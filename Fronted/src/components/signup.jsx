@@ -24,7 +24,7 @@ export function SignUp() {
     };
   
     try {
-      const res = await axios.post("http://localhost:4001/user/signup", userinfo);
+      const res = await axios.post("/user/signup", userinfo);
       
       // Log the entire response to check the structure
       console.log("Signup response data:", res.data);
