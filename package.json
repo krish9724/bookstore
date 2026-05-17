@@ -1,0 +1,9 @@
+{
+  "name": "bookstore-fullstack",
+  "version": "1.0.0",
+  "description": "Fullstack deployment configuration for Render",
+  "scripts": {
+    "build": "npm install --prefix Backend && npm install --prefix Fronted && npm run build --prefix Fronted",
+    "start": "npm start --prefix Backend"
+  }
+}
