@@ -3,7 +3,7 @@ import banner from "../../public/banner.png"
 function Banner() {
   return (
     <>
-      <div className="max-w-screen-2xl container mx-auto md:px-20 sm:px-5 py-3 flex flex-col md:flex-row my-10">
+      <div className="max-w-screen-2xl container mx-auto overflow-y-hidden md:px-20 sm:px-5 py-3 flex flex-col md:flex-row my-10">
         <div className="w-full order-2 md:w-1/2 mt-12 md:mt-32 px-4 sm:px-5 md:px-0">
           <div className="space-y-11">
             <h1 className="text-4xl font-bold">
