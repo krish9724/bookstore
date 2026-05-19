@@ -6,9 +6,9 @@ function Banner() {
       <div className="max-w-screen-2xl container mx-auto overflow-y-hidden md:px-20 sm:px-5 py-3 flex flex-col md:flex-row my-10">
         <div className="w-full order-2 md:w-1/2 mt-12 md:mt-32 px-4 sm:px-5 md:px-0">
           <div className="space-y-11">
-            <h1 className="text-4xl font-bold">
+            <h1 className="text-3xl md:text-4xl font-bold break-words">
               Welcome to Book Haven! Dive into a{' '}
-              <span className="text-blue-600">universe of stories.</span>
+              <span className="text-red-600">universe of stories.</span>
             </h1>
             <p>
               Our cozy, welcoming store is more than just a place to buy books.
@@ -32,8 +32,8 @@ function Banner() {
 
           </div>
                  </div>
-        <div className=" order-1 w-full md:w-1/2">
-            <img src={banner} className='w-92 h-92'/>
+        <div className=" order-1 w-full md:w-1/2 flex justify-center mt-12 md:mt-32">
+            <img src={banner} className='w-full max-w-sm md:max-w-md h-auto'/>
         </div>
       </div>
     </>
