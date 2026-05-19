@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import Login from './login'; // Adjust the path as necessary
 import { useAuth } from '../context/authprovider';
 import Logout from './logout';
@@ -39,16 +40,16 @@ function Navbar() {
   const navItems = (
     <>
       <li>
-        <a className='dark:bg-slate-900 dark:text-white' href="/">Home</a>
+        <Link className='dark:bg-slate-900 dark:text-white' to="/">Home</Link>
       </li>
       <li>
-        <a className='dark:bg-slate-900 dark:text-white' href="/course">Courses</a>
+        <Link className='dark:bg-slate-900 dark:text-white' to="/course">Courses</Link>
       </li>
       <li>
-        <a className='dark:bg-slate-900 dark:text-white'>Contact</a>
+        <Link className='dark:bg-slate-900 dark:text-white' to="#">Contact</Link>
       </li>
       <li>
-        <a className='dark:bg-slate-900 dark:text-white'>About</a>
+        <Link className='dark:bg-slate-900 dark:text-white' to="#">About</Link>
       </li>
     </>
   );
@@ -61,8 +62,8 @@ function Navbar() {
             : ""
         }`}
       >
-        <div className="navbar ">
-          <div className="navbar-start">
+        <div className="navbar "> 
+         <div className="navbar-start">
             <div className="dropdown">
               <div
                 tabIndex={0}
@@ -91,7 +92,7 @@ function Navbar() {
                 {navItems}
               </ul>
             </div>
-            <a className=" text-2xl font-bold cursor-pointer">bookStore</a>
+            <a className=" text-xl md:text-2xl font-bold cursor-pointer">bookStore</a>
           </div>
           <div className="navbar-end space-x-3">
             <div className="navbar-center hidden lg:flex">
@@ -158,12 +159,12 @@ function Navbar() {
                 >
                   Login
                 </a>
-                <Login />
               </div>
               }
             
           </div>
         </div>
+        <Login />
       </div>
     </>
   );
